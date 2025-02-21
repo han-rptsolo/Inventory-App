@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color:  #2c3e50;;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.storage-already-used {
+    margin-top: 0.5rem;
+}
+
+.storage-area-card {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    height: 30px;
+    background-color: wheat;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.area-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3498db;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.area-section[data-count="0"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    grid-column: 1;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.inventory-info-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    grid-column: 2;
+}   
+
+.inventory-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.inventory-item {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border-left: 4px solid transparent;
+}
+
+.inventory-item  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.inventory-item p {
+    margin: 0.25rem 0;
+    color: #999;
+}   
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.room-plan {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    grid-column: 3;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-section, .inventory-info-section {
+        grid-column: 1;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
