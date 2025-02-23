@@ -22,8 +22,9 @@ class InventoryManager {
             quantity: parseInt(document.getElementById('productQuantity').value),
             price: parseFloat(document.getElementById('productPrice').value),
             section: document.getElementById('productSection').value,
-            description: document.getElementById('productDescription').value,
+            
             location: document.getElementById('productLocation').value
+            description: document.getElementById('productDescription').value,
         };
         
         this.inventory.push(product);
@@ -34,14 +35,9 @@ class InventoryManager {
     }
     
     renderInventory() {
-        this.inventoryList.innerHTML = '';
+        this.inventoryList.innerHTML = ''; // Clear the inventory list
         
-        if (this.inventory.length === 0) {
-            this.inventoryList.innerHTML = '<p>No products in the inventory</p>';
-            return;
-        }
-        
-        this.inventory.forEach(product => {
+        this.inventory.forEach((product) => {
             const item = document.createElement('div');
             item.className = 'inventory-item';
             item.innerHTML = `
@@ -51,23 +47,26 @@ class InventoryManager {
                 <p><strong>Category:</strong> ${product.section}</p>
                 <p><strong>Location:</strong> ${product.location}</p>
                 <p><strong>Description:</strong> ${product.description}</p>
-                <button class="delete-btn">Delete</button>
+                <button class="delete-btn" data-id="${product.id}">Delete</button>
             `;
             this.inventoryList.appendChild(item);
         });
-        
-        // Attach delete buttons' event listeners after inventory is rendered
+    
+        // Attach event listeners to each delete button AFTER rendering the inventory
         const deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach((button, index) => {
-            button.addEventListener('click', () => this.deleteProduct(this.inventory[index].id));
+        deleteButtons.forEach((button) => {
+            button.addEventListener('click', (e) => {
+                const productId = e.target.getAttribute('data-id'); // Get the product ID from the button's data-id
+                this.deleteProduct(productId); // Pass the product ID to the delete function
+            });
         });
     }
     
     deleteProduct(id) {
-        this.inventory = this.inventory.filter(product => product.id !== id);
-        this.saveToLocalStorage();
-        this.renderInventory();
-        this.updateDashboard();
+        this.inventory = this.inventory.filter(product => product.id !== parseInt(id)); // Filter out the product by ID
+        this.saveToLocalStorage(); // Update localStorage
+        this.renderInventory(); // Re-render the inventory list after deletion
+        this.updateDashboard(); // Update the dashboard after deletion
     }
     
     updateDashboard() {
